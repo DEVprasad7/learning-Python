@@ -8,7 +8,7 @@ def calculate(n1, n2, op):
     elif op == 3:
         result =  n1 * n2
     elif op == 4:
-        result =  n1 / n2
+        result =  round(n1 / n2, 2)
     elif op == 5:
         result =  n1 ** n2
     else :
