@@ -1,3 +1,5 @@
+#Creating a simply calculator executed in terminal
+
 def calculate(n1, n2, op):
     if op == 1:
         result =  n1 + n2
@@ -19,9 +21,6 @@ def calculate(n1, n2, op):
 
     
 
-
-
-    
 
 continue_calculating = True
 while continue_calculating is True:
