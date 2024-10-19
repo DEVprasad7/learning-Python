@@ -8,4 +8,4 @@ if A > B:
 elif A < B:
     print("Y is greater")
 else:
-    print("X and Y1 are equal")
+    print("X and Y are equal")
