@@ -5,7 +5,8 @@ from sklearn.preprocessing import LabelEncoder
 import pandas as pd
 
 # Load the dataset from CSV file
-data = pd.read_csv('DATA.csv')
+csv_path = 'DATA.csv'
+data = pd.read_csv(csv_path)
 
 # Encode categorical data into numeric values
 label_encoders = {}
