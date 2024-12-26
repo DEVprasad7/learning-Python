@@ -1,3 +1,12 @@
+"""The n-queen problem is a classic combinatorial problem of placing n queens on an n x n ,
+   chessboard so that no two queens attack each other.
+   A queen can attack horizontally, vertically, and diagonally.
+   1 -> Queen is placed.
+   0 -> Empty cell."""
+
+
+
+
 def main():
     n = int(input("Enter the number of queens : "))
     # Create a 2D array of n x n board
