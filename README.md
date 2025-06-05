@@ -3,24 +3,4 @@ This is my first Git Repository i'm learning python right now and let's learn to
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Author - Prasad Maskar
+    Author - Prasad Maskar
