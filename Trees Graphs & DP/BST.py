@@ -25,6 +25,23 @@ class BinarySearchTree:
 
         return curr
     
+    def search(self, data):
+        def Search(root, data):
+            if root == None:
+                print("Element Not Found")
+                return
+                
+            if root.data == data:
+                print("Element Found")
+                return
+            
+            if data < root.data:
+                Search(root.left, data)
+            else:
+                Search(root.right, data)
+        
+        Search(self.root, data)
+            
     def preorder(self):
         def PreOrder(root):
             if root:
@@ -66,3 +83,6 @@ print()
 BST.inorder()
 print()
 BST.postorder()
+print()
+BST.search(19)
+BST.search(99)
