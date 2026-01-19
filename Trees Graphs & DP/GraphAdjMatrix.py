@@ -4,7 +4,7 @@ class Graph:
         self.size = size
         
     def add_edge(self, src: int, dest: int, weight: int = 1, directed = False):
-        if (0 <= src <= self.size and 0 <= dest <= self.size):
+        if (0 <= src < self.size and 0 <= dest < self.size):
             if directed == True:
                 self.mat[src][dest] = weight
             else:
