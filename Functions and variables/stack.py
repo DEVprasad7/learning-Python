@@ -1,59 +1,43 @@
-
-def push(stack, top, item, MAX):
-    top += 1
-    stack[top] = item
-    return stack, top
-
-def pop(stack, top):
-    item = stack[top]
-    top -= 1
-    return stack, top, item
-
-def display(stack, top):
-    if top == 0:
-        print("Stack is empty")
-    else:
-        for i in range(1, top+1):
-            print(stack[i], end=" ")
-        print()
-
-def display_top(stack, top):
-    if top == 0:
-        print("Stack is empty")
-    else:
-        print(stack[top])
-
-def main():
-    MAX = int(input("Enter the size of the stack: "))
-    stack = [0] * (MAX + 1) 
-    top = 0
-    while True:
-        print("1. Push")
-        print("2. Pop")
-        print("3. Display")
-        print("4. Display top")
-        print("5. Exit")
-        choice = int(input("Enter your choice: "))
-        if choice == 1:
-            if top == MAX:
-                print("Stack is full")
-            else:
-                item = int(input("Enter the item to be pushed: "))
-                stack, top = push(stack, top, item, MAX)
-        elif choice == 2:
-            if top == 0:
-                print("Stack is empty")
-            else:
-                stack, top, item = pop(stack, top)
-                print("Popped item is", item)
-        elif choice == 3:
-            display(stack, top)
-        elif choice == 4:
-            display_top(stack, top)
-        elif choice == 5:
-            break
+class Stack:
+    def __init__(self):
+        self.stack = []
+        
+    def isEmpty(self):
+        return len(self.stack) == 0
+    
+    def push(self, v):
+        self.stack.insert(0, v)
+        
+    def pop(self):
+        if (self.isEmpty()):
+            raise Exception("Stack is empty")
         else:
-            print("Invalid choice")
+            return self.stack.pop(0)
+        
+    def peek(self):
+        if (self.isEmpty()):
+            raise Exception("Stack is empty")
+        else:
+            return self.stack[0]
+        
+    def print(self):
+        print(self.stack)
+        
+    def size(self):
+        return len(self.stack)
+    
 
-if __name__ == "__main__":
-    main()
+stack = Stack()
+
+L = [1,2,3,4,5,6,7,8,9,0]
+for i in L:
+    stack.push(i)
+
+stack.print()
+print(stack.peek())
+print("Size:", stack.size())
+
+print(stack.pop())
+print(stack.pop())
+print(stack.pop())
+stack.print()
