@@ -1,35 +1,57 @@
-# sorting a list using insertion sort algorithm
-
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        key = arr[i]
-        j = i - 1
-        while j >= 0 and key < arr[j]:
-            arr[j + 1] = arr[j]
-            j -= 1
-        arr[j + 1] = key
-
-try:
-    n = int(input("Enter the number of elements in the list: "))
-    if n <= 0:
-        print("Please enter a positive integer.")
-    else:
-        print(f"Enter {n} elements:")
-        numbers = []
-        for _ in range(n):
-            while True:
-                try:
-                    num = int(input())
-                    numbers.append(num)
-                    break
-                except ValueError:
-                    print("Invalid input! Please enter a number.")
+class Array:
+    def __init__(self):
+        self.arr = []
         
-        print(f"Original list: {numbers}")
+    def insert(self, v):
+        self.arr.append(v)
+        
+    def length(self):
+        return len(self.arr)
+        
+    def display(self):
+        print(self.arr)
+        
+    def remove(self, v):
+        if v in self.arr:
+            self.arr.remove(v)
+            
+            
+    def insertion_sort(self, reverse=False):
+        rn = len(self.arr)
+        for i in range(1, rn):
+            key = self.arr[i]
+            j = i-1
+            
+            if not reverse:
+                while (j>=0 and key < self.arr[j]):
+                    self.arr[j+1] = self.arr[j]
+                    j = j-1
+        
+                self.arr[j+1] = key
+                
+            else:
+                while(j>=0 and key > self.arr[j]):
+                    self.arr[j+1] = self.arr[j]
+                    j = j-1
+                
+                self.arr[j+1] = key
+                
+            
+arr = Array()
 
-        insertion_sort(numbers)
-        print(f"Sorted list: {numbers}")
-except ValueError:
-    print("Invalid input! Please enter a valid integer for the number of elements.")
+l = [64,12,32,43,54,20,15,2,1]
+
+for i in l:
+    arr.insert(i)
 
 
+arr.display()
+
+arr.insertion_sort()
+arr.display()
+
+arr.insertion_sort(reverse=True)
+arr.display()
+                
+                
+                
