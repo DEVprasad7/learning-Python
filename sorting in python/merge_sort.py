@@ -1,54 +1,95 @@
-# Sorting a list using merge sort algorithm
-
-def merge_sort(arr):
-    if len(arr) > 1:
-        mid = len(arr) // 2
-
-        left_half = arr[:mid]
-        right_half = arr[mid:]
-
-        merge_sort(left_half)
-        merge_sort(right_half)
-
-        i = j = k = 0
-        while i < len(left_half) and j < len(right_half):
-            if left_half[i] < right_half[j]:
-                arr[k] = left_half[i]
-                i += 1
-            else:
-                arr[k] = right_half[j]
-                j += 1
-            k += 1
-
-        while i < len(left_half):
-            arr[k] = left_half[i]
-            i += 1
-            k += 1
-
-        while j < len(right_half):
-            arr[k] = right_half[j]
-            j += 1
-            k += 1
-
-try:
-    n = int(input("Enter the number of elements in the list: "))
-    if n <= 0:
-        print("Please enter a positive integer.")
-    else:
-        print(f"Enter {n} elements:")
-        numbers = []
-        for _ in range(n):
-            while True:
-                try:
-                    num = int(input())
-                    numbers.append(num)
-                    break
-                except ValueError:
-                    print("Invalid input! Please enter a number.")
+class Array:
+    def __init__(self):
+        self.arr = []
         
-        print(f"Original list: {numbers}")
+    def insert(self, v):
+        self.arr.append(v)
+        
+    def length(self):
+        return len(self.arr)
+        
+    def display(self):
+        print(self.arr)
+        
+    def remove(self, v):
+        if v in self.arr:
+            self.arr.remove(v)
+            
+            
+    def merge_sort(self, reverse=False):
+        
+        def Divide(arr, l, r):
+            if (l < r):
+                m = (l+r) // 2
+                Divide(arr, l, m)
+                Divide(arr, m+1, r)
+                merge(arr, l, m, r)
+                
+        def merge(arr, l, m, r):
+            s1 = m - l + 1
+            s2 = r - (m+1) + 1
+            
+            L = [0] * s1
+            R = [0] * s2
+            
+            for i in range(0, s1):
+                L[i] = arr[l + i]
+                
+            for j in range(0, s2):
+                R[j] = arr[m + 1 + j]
+                
+            i = j = 0
+            k = l
+            
+            while (i < s1 and j < s2):
+                if not reverse:
+                    if L[i] < R[j]:
+                        arr[k] = L[i]
+                        i += 1
+                        
+                    else:
+                        arr[k] = R[j]
+                        j += 1
+                        
+                    k += 1
+                else:
+                    if L[i] > R[j]:
+                        arr[k] = L[i]
+                        i += 1
+                        
+                    else:
+                        arr[k] = R[j]
+                        j += 1
+                        
+                    k += 1
+                    
+            while (i < s1):
+                arr[k] = L[i]
+                i += 1
+                k += 1
+                
+            while (j < s2):
+                arr[k] = R[j]
+                j += 1
+                k += 1
+                
+        Divide(self.arr, 0, len(self.arr)-1)
+            
+arr = Array()
 
-        merge_sort(numbers)
-        print(f"Sorted list: {numbers}")
-except ValueError:
-    print("Invalid input! Please enter a valid integer for the number of elements.")
+l = [64,12,32,43,54,20,15,2,1]
+
+for i in l:
+    arr.insert(i)
+
+
+arr.display()
+
+arr.merge_sort()
+arr.display()
+
+arr.merge_sort(reverse=True)
+arr.display()
+                
+                
+                
