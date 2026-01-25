@@ -7,7 +7,7 @@ def Divide(arr, l, r):
         
 def merge(arr, l, m, r):
     s1 = m - l + 1
-    s2 = r - (m+1) + 1
+    s2 = r - m          # r - (m+1) + 1
     
     L = [0] * s1
     R = [0] * s2
@@ -16,7 +16,7 @@ def merge(arr, l, m, r):
         L[i] = arr[l + i]
         
     for j in range(0, s2):
-        R[j] = arr[m + 1 + j]
+        R[j] = arr[(m+1) + j]
         
     i = j = 0
     k = l
